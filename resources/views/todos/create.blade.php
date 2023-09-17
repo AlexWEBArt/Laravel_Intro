@@ -15,6 +15,5 @@
             </div>
             <button type="submit" class="btn btn-primary">Создать задачу</button>
         </form>
-        <a href="{{ route('todo.store') }}">Вернуться на главную</a>
     </div>
 @endsection

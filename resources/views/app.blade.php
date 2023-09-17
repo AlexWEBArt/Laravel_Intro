@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <a href="{{ route('todo.store') }}">К списку задач</a>
     @yield('content')
 </body>
 </html>
