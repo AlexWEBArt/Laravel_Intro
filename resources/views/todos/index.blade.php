@@ -1,7 +1,10 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('content')
     <div class="container">
+        <div>
+            <a href="{{ route('home') }}">Закрыть список задач</a>
+        </div>
         <h1>Все задачи</h1>
         <ul>
             @foreach($todos as $todo)

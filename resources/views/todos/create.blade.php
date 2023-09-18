@@ -1,7 +1,10 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('content')
     <div class="container">
+        <div>
+            <a href="{{ route('todo.store') }}">К списку задач</a>
+        </div>
         <h1>Создать новую задачу</h1>
         <form method="POST" action="{{ route('todo.store') }}">
             @csrf

@@ -3,10 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
 
-Route::get('/todo', [TodoController::class, 'index']);
-Route::get('/todo/create', [TodoController::class, 'create']);
-Route::post('/todo', [TodoController::class, 'store']);
-Route::get('/todo/{id}', [TodoController::class, 'show']);
+// Route::get('/todo', [TodoController::class, 'index']);
+// Route::get('/todo/create', [TodoController::class, 'create']);
+// Route::post('/todo', [TodoController::class, 'store']);
+// Route::get('/todo/{id}', [TodoController::class, 'show']);
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +19,17 @@ Route::get('/todo/{id}', [TodoController::class, 'show']);
 |
 */
 
-Route::post('/todo', 'TodoController@store')->name('todo.store');
-Route::get('/todo/create', 'TodoController@create')->name('todo.create');
-Route::get('/todo/{id}', [TodoController::class, 'show'])->name('todo.show');
-
 Route::get('/', function () {
-    return view('app');
+    return view('layouts.app');
 });
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/todo', [TodoController::class, 'index']);
+    Route::post('/todo', 'TodoController@store')->name('todo.store');
+    Route::get('/todo/create', 'TodoController@create')->name('todo.create');
+    Route::get('/todo/{id}', [TodoController::class, 'show'])->name('todo.show');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
